@@ -1,0 +1,56 @@
+{% extends 'base/base.html' %}
+
+{% block content %}
+
+    <ol class="breadcrumb">
+        <li><a href="#">Escritorio</a></li>
+        <li><a href="#"> Productos</a></li>
+        <li class="active">Nuevo Producto</li>
+    </ol>
+
+
+    <div class="page-header">
+        <h1>Producto Nuevo </h1>
+    </div>
+
+    <div class="row">
+        <div class="col-md-8">
+
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    Nuevo Producto
+                </div>
+                <div class="panel-body">
+
+
+                    <form method="post">
+                  	{% csrf_token %}
+
+                    <div class="form-group">
+                        <label for="{{form.nombre.name}}">{{form.name.label}}</label>
+                        {{form.name}}
+                    </div>
+                    <div class="form-group">
+                        <label for="{{form.precio.name}}">{{form.price.label}}</label>
+                         {{form.price}}
+                    </div>
+                    <div class="form-group">
+                        <label for="{{form.marks.name}}">{{form.marks.label}}</label>
+                         {{form.marks}}
+                    </div>
+                    	<button class="btn btn-warning btn-sm m-t-10" ,name='grabar',id='grabar',type="submit">Grabar</button>
+
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+
+    <script>
+      $("#cancelar").click(function(event)
+      {
+          document.location.href = "#";
+      });
+    </script>
+{% endblock %}

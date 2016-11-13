@@ -2,9 +2,7 @@
 {% block title %}Listado de Productos {% endblock %}
 {% block content %}
 <!-- Main component for a primary marketing message or call to action -->
-</br>
-</br>
-</br>
+
 <ol class="breadcrumb">
     <li><a href="#">Escritorio</a></li>
     <li class="active">Productos</li>
@@ -35,6 +33,7 @@
                     <th>Acción</th>
                     </thead>
                     <tbody>
+          
                     {% if object_list %}
                     {% for products in object_list %}
 
@@ -65,7 +64,7 @@
 <script>
     $("#nuevo").click(function(event)
     {
-        document.location.href = "#";
+        document.location.href = "{% url 'producto:producto_agregar'%}";
     });
 </script>
 
