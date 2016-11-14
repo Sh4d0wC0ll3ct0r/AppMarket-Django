@@ -33,7 +33,6 @@
                     <th>Acción</th>
                     </thead>
                     <tbody>
-          
                     {% if object_list %}
                     {% for products in object_list %}
 
@@ -41,8 +40,8 @@
                             <td>{{products.name}}</td>
                             <td>{{products.price}}</td>
                             <td>{{products.marks}}</td>
-                           <td><a href="#">[Editar]</a>
-                               <a href="#">[Eliminar]</a></td>
+                           <td><a href="{% url 'producto:producto_editar' products.id %}">[Editar]</a>
+                               <a href="{% url 'producto:producto_eliminar' products.id %}">[Eliminar]</a></td>
                         </tr>
                 	  {% endfor %}
                     {% else %}
