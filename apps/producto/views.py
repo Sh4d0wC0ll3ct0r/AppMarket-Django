@@ -10,7 +10,7 @@ from django.views.generic import ListView,CreateView,UpdateView,DeleteView
 class ProductoList(ListView):
     model=Product
     template_name='product/product_list.html'
-    #paginate_by= 2 Esto se usa cuando se quiere paginar el ejemplo se lo ve el el proyecto refugio
+    paginate_by= 2 #Esto se usa cuando se quiere paginar el ejemplo se lo ve el el proyecto refugio
 
 class ProductoCreate(CreateView):
     model= Product
