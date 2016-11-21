@@ -1,3 +1,5 @@
+from django.contrib import messages
+from django.contrib.messages.views import SuccessMessageMixin
 from django.shortcuts import render
 from django.http import HttpResponseRedirect
 from django.core.urlresolvers import reverse_lazy
@@ -25,15 +27,18 @@ class ProductoCreate(CreateView):
         if form.is_valid():
             producto = form.save(commit=False)
             producto.save()
+            messages.success(request,'Se ha creado correctamente')
             return HttpResponseRedirect(self.get_success_url())
 
-class ProductoEdit(UpdateView):
+class ProductoEdit(SuccessMessageMixin,UpdateView):
     model=Product
     form_class=ProductForm
     template_name='product/product_form.html'
     success_url=reverse_lazy('producto:producto_listar')
+    success_message = "Se ha actualizado creado correctamente"
 
-class ProductoDelete(DeleteView):
+class ProductoDelete(SuccessMessageMixin,DeleteView):
     model=Product
     template_name='product/product_delete.html'
     success_url=reverse_lazy('producto:producto_listar')
+    success_message = "Se ha eliminado correctamente"
