@@ -5,7 +5,6 @@ from django.http import HttpResponseRedirect
 from django.core.urlresolvers import reverse_lazy
 from apps.producto.models import Product
 from apps.producto.forms import ProductForm
-
 from django.views.generic import ListView,CreateView,UpdateView,DeleteView
 # Create your views here.
 
@@ -37,8 +36,11 @@ class ProductoEdit(SuccessMessageMixin,UpdateView):
     success_url=reverse_lazy('producto:producto_listar')
     success_message = "Se ha actualizado creado correctamente"
 
-class ProductoDelete(SuccessMessageMixin,DeleteView):
+class ProductoDelete(DeleteView):
     model=Product
     template_name='product/product_delete.html'
     success_url=reverse_lazy('producto:producto_listar')
     success_message = "Se ha eliminado correctamente"
+    def delete(self,request,*args,**kwargs):
+         messages.success(self.request, self.success_message)
+         return super(ProductoDelete, self).delete(request, *args, **kwargs)
